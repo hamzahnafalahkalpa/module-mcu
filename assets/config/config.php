@@ -7,23 +7,27 @@ use Hanafalah\ModuleMcu\{
 use Hanafalah\ModuleMcu\Contracts;
 
 return [
-    'commands' => [
-        ModuleMcuCommands\InstallMakeCommand::class
+    'namespace' => 'Hanafalah\\ModuleMcu',
+    'app' => [
+        'contracts' => [
+            //ADD YOUR CONTRACTS HERE
+        ]
     ],
-    'contracts' => [
-        'mcu_category'            => Contracts\McuCategory::class,
-        'mcu_package'             => Contracts\McuPackage::class,
-        'mcu_service_item'        => Contracts\McuServiceItem::class,
-        'mcu_service_price'       => Contracts\McuServicePrice::class,
-        'mcu_visit_registration'  => Contracts\McuVisitRegistration::class,
-        'module-mcu'              => Contracts\ModuleMcu::class,
+    'libs' => [
+        'model' => 'Models',
+        'contract' => 'Contracts',
+        'schema' => 'Schemas',
+        'database' => 'Database',
+        'data' => 'Data',
+        'resource' => 'Resources',
+        'migration' => '../assets/database/migrations'
     ],
     'database' => [
         'models' => [
-            'McuCategory'          => ModuleMCU\McuCategory\McuCategory::class,
-            'McuVisitRegistration' => ModuleMCU\McuRegistration\McuVisitRegistration::class,
-            'McuPackage'           => ModuleMCU\McuPackage\McuPackage::class,
-            'McuServicePrice'      => ModuleMCU\McuServicePrice\McuServicePrice::class,
+
         ]
+    ],
+    'commands' => [
+        ModuleMcuCommands\InstallMakeCommand::class
     ]
 ];
