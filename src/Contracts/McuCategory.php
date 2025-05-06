@@ -2,7 +2,7 @@
 
 namespace Hanafalah\ModuleMcu\Contracts;
 
-use Hanafalah\LaravelSupport\Contracts\DataManagement;
+use Hanafalah\LaravelSupport\Contracts\Supports\DataManagement;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 
 interface McuCategory extends DataManagement
