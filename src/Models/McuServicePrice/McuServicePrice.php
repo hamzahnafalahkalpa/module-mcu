@@ -18,14 +18,14 @@ class McuServicePrice extends Treatment
         });
     }
 
-    public function toViewApi()
+    public function getViewResource()
     {
-        return new ViewMcuServicePrice($this);
+        return ViewMcuServicePrice::class;
     }
 
-    public function toShowApi()
+    public function getShowResource()
     {
-        return new ShowMcuServicePrice($this);
+        return ShowMcuServicePrice::class;
     }
 
     public function transaction()

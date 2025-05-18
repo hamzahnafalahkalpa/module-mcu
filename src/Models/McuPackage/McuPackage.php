@@ -49,14 +49,14 @@ class McuPackage extends BaseModel
         });
     }
 
-    public function toViewApi()
+    public function getViewResource()
     {
-        return new ViewMcuPackage($this);
+        return ViewMcuPackage::class;
     }
 
-    public function toShowApi()
+    public function getShowResource()
     {
-        return new ShowMcuPackage($this);
+        return ShowMcuPackage::class;
     }
 
     public function priceComponent()
