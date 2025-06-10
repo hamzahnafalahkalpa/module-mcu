@@ -10,7 +10,7 @@ use Hanafalah\ModuleMcu\Resources\McuVisitRegistration\{
     ShowMcuVisitRegistration,
     ViewMcuVisitRegistration
 };
-use Hanafalah\ModuleMedicService\Enums\MedicServiceFlag;
+use Hanafalah\ModuleMedicService\Enums\Label;
 use Illuminate\Database\Eloquent\{Builder, Model};
 use Hanafalah\ModulePatient\{
     Schemas\VisitRegistration
@@ -55,7 +55,7 @@ class McuVisitRegistration extends VisitRegistration implements ContractsMcuVisi
     public function prepareStoreMcuVisitRegistration(?array $attributes = null): Model
     {
         request()->merge([
-            'medic_service_id' => $this->getMedicServiceByFlag(MedicServiceFlag::MCU->value)->service->getKey()
+            'medic_service_id' => $this->getMedicServiceByFlag(Label::MCU->value)->service->getKey()
         ]);
         $attributes ??= request()->all();
         //POLI MCU
