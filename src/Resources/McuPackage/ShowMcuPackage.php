@@ -17,20 +17,20 @@ class ShowMcuPackage extends ViewMcuPackage
         $arr = [
             'price_components' => $this->relationValidation('priceComponents', function () {
                 return $this->priceComponents->transform(function ($priceComponent) {
-                    return $priceComponent->toShowApi();
+                    return $priceComponent->toShowApi()->resolve();
                 });
             }),
             'treatment'        => $this->relationValidation('treatment', function () {
-                return $this->treatment->toShowApi();
+                return $this->treatment->toShowApi()->resolve();
             }),
             'treatments'       => $this->relationValidation('treatments', function () {
                 return $this->treatments->transform(function ($treatment) {
-                    return $treatment->toShowApi();
+                    return $treatment->toShowApi()->resolve();
                 });
             }),
             'childs' => $this->relationValidation('childs', function () {
                 return $this->childs->transform(function ($child) {
-                    return $child->toShowApi();
+                    return $child->toShowApi()->resolve();
                 });
             })
         ];

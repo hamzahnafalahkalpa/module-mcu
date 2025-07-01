@@ -34,21 +34,21 @@ class ViewMcuPackage extends ApiResource
             'agents'         => $this->prop_agents ?? [],
             'medic_services' => $this->prop_medic_services ?? [],
             'treatment'      => $this->relationValidation('treatment', function () {
-                return $this->treatment->toViewApi();
+                return $this->treatment->toViewApi()->resolve();
             }),
             'treatments'       => $this->relationValidation('treatments', function () {
                 return $this->treatments->transform(function ($treatment) {
-                    return $treatment->toViewApi();
+                    return $treatment->toViewApi()->resolve();
                 });
             }),
             'price_components' => $this->relationValidation('priceComponents', function () {
                 return $this->priceComponents->transform(function ($priceComponent) {
-                    return $priceComponent->toViewApi();
+                    return $priceComponent->toViewApi()->resolve();
                 });
             }),
             'childs' => $this->relationValidation('childs', function () {
                 return $this->childs->transform(function ($child) {
-                    return $child->toViewApi();
+                    return $child->toViewApi()->resolve();
                 });
             })
         ];

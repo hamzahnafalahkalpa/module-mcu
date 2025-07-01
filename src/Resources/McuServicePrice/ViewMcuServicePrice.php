@@ -20,12 +20,12 @@ class ViewMcuServicePrice extends ApiResource
             'parent_id' => $this->parent_id,
             'childs'    => $this->relationValidation('childs', function () {
                 return $this->childs->transform(function ($child) {
-                    return $child->toViewApi();
+                    return $child->toViewApi()->resolve();
                 });
             }),
             'service_prices' => $this->relationValidation('servicePrices', function () {
                 return $this->servicePrices->transform(function ($service_price) {
-                    return $service_price->toViewApi();
+                    return $service_price->toViewApi()->resolve();
                 });
             })
         ];

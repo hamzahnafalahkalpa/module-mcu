@@ -17,12 +17,12 @@ class ShowMcuServicePrice extends ViewMcuServicePrice
         $arr = [
             'childs'    => $this->relationValidation('childs', function () {
                 return $this->childs->transform(function ($child) {
-                    return $child->toShowApi();
+                    return $child->toShowApi()->resolve();
                 });
             }),
             'service_prices' => $this->relationValidation('servicePrices', function () {
                 return $this->servicePrices->transform(function ($service_price) {
-                    return $service_price->toShowApi();
+                    return $service_price->toShowApi()->resolve();
                 });
             })
         ];
