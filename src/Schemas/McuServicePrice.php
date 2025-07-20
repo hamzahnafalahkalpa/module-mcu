@@ -14,7 +14,7 @@ class McuServicePrice extends PackageManagement implements ContractsMcuServicePr
 {
 
     protected string $__entity = 'McuServicePrice';
-    public static $mcu_service_price_model;
+    public $mcu_service_price_model;
 
     protected array $__resources = [
         'view' => ViewMcuServicePrice::class,
@@ -39,7 +39,7 @@ class McuServicePrice extends PackageManagement implements ContractsMcuServicePr
             $query->where('reference_id', $attributes['mcu_package_id'])
                 ->where('reference_type', $this->McuPackageModel()->getMorphClass());
         })->get();
-        return static::$mcu_service_price_model = $model;
+        return $this->mcu_service_price_model = $model;
     }
 
     public function viewMcuServicePriceList(): array
@@ -51,7 +51,7 @@ class McuServicePrice extends PackageManagement implements ContractsMcuServicePr
 
     public function getMcuServicePrice(): mixed
     {
-        return static::$mcu_service_price_model;
+        return $this->mcu_service_price_model;
     }
 
     public function prepareShowMcuServicePrice(?Model $model = null, ?array $attributes = null): Model
@@ -68,7 +68,7 @@ class McuServicePrice extends PackageManagement implements ContractsMcuServicePr
             $model->load($this->showUsingRelation());
         }
 
-        return static::$mcu_service_price_model = $model;
+        return $this->mcu_service_price_model = $model;
     }
 
     public function showMcuServicePrice(?Model $model = null)
@@ -191,7 +191,7 @@ class McuServicePrice extends PackageManagement implements ContractsMcuServicePr
 
         $mcu_service_package->price = $attributes['price'] ?? $total_price;
         $mcu_service_package->save();
-        return static::$mcu_service_price_model = $mcu_service_package;
+        return $this->mcu_service_price_model = $mcu_service_package;
     }
 
     public function storeMcuServicePrice(): array

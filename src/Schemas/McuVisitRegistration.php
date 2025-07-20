@@ -22,7 +22,7 @@ class McuVisitRegistration extends VisitRegistration implements ContractsMcuVisi
     use PaymentCalculation;
 
     protected string $__entity = 'McuVisitRegistration';
-    public static $mcu_visit_model;
+    public $mcu_visit_model;
 
     protected Model $__mcu_package;
     protected MOdel $__mcu_visit_examination;

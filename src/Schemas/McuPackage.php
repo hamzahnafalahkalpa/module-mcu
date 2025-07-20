@@ -17,7 +17,7 @@ class McuPackage extends PackageManagement implements ContractsMcuPackage
 {
 
     protected string $__entity = 'McuPackage';
-    public static $mcu_package_model;
+    public $mcu_package_model;
 
     protected array $__resources = [
         'view' => ViewMcuPackage::class,
@@ -44,7 +44,7 @@ class McuPackage extends PackageManagement implements ContractsMcuPackage
         $attributes ??= request()->all();
 
         $model = $this->mcuPackage()->get();
-        return static::$mcu_package_model = $model;
+        return $this->mcu_package_model = $model;
     }
 
     public function viewMcuPackageList(): array
@@ -57,7 +57,7 @@ class McuPackage extends PackageManagement implements ContractsMcuPackage
     public function prepareViewMcuPackagePaginate(int $perPage = 50, array $columns = ['*'], string $pageName = 'page', ?int $page = null, ?int $total = null): LengthAwarePaginator
     {
         $paginate_options = compact('perPage', 'columns', 'pageName', 'page', 'total');
-        return static::$mcu_package_model = $this->mcuPackage()->paginate(...$this->arrayValues($paginate_options))->appends(request()->all());
+        return $this->mcu_package_model = $this->mcuPackage()->paginate(...$this->arrayValues($paginate_options))->appends(request()->all());
     }
 
     public function viewMcuPackagePaginate(int $perPage = 50, array $columns = ['*'], string $pageName = 'page', ?int $page = null, ?int $total = null): array
@@ -70,7 +70,7 @@ class McuPackage extends PackageManagement implements ContractsMcuPackage
 
     public function getMcuPackage(): mixed
     {
-        return static::$mcu_package_model;
+        return $this->mcu_package_model;
     }
 
     public function prepareShowMcuPackage(?Model $model = null, ?array $attributes = null): Model
@@ -87,7 +87,7 @@ class McuPackage extends PackageManagement implements ContractsMcuPackage
             $model->load($this->showUsingRelation());
         }
 
-        return static::$mcu_package_model = $model;
+        return $this->mcu_package_model = $model;
     }
 
     public function showMcuPackage(?Model $model = null)
@@ -228,7 +228,7 @@ class McuPackage extends PackageManagement implements ContractsMcuPackage
         foreach ($service_items as $service_item) {
             $service_item->delete();
         }
-        return static::$mcu_package_model = $model;
+        return $this->mcu_package_model = $model;
     }
 
     protected function hasOrganization(&$model, &$treatment, $organization_type, mixed $id)

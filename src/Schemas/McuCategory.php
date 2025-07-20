@@ -12,7 +12,7 @@ class McuCategory extends PackageManagement implements ContractsMcuCategory
     protected array $__guard   = ['id'];
     protected array $__add     = ['name'];
     protected string $__entity = 'McuCategory';
-    public static $mcu_category_model;
+    public $mcu_category_model;
 
     public function mcuCategory(mixed $conditionals = null): Builder
     {
