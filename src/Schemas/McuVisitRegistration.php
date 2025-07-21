@@ -46,28 +46,27 @@ class McuVisitRegistration extends VisitRegistration implements ContractsMcuVisi
     public function addOrChange(?array $attributes = []): self
     {
         $model = $this->updateOrCreate($attributes);
-        static::$mcu_visit_model = $model;
+        $this->mcu_visit_model = $model;
         return $this;
     }
 
     protected function defaultAssessmentTemplate(Model $assessment): void {}
 
-    public function prepareStoreMcuVisitRegistration(?array $attributes = null): Model
-    {
+    public function prepareStoreMcuVisitRegistration(?array $attributes = null): Model{
         request()->merge([
             'medic_service_id' => $this->getMedicServiceByFlag(Label::MCU->value)->service->getKey()
         ]);
         $attributes ??= request()->all();
         //POLI MCU
-        static::$mcu_visit_model  = parent::prepareStoreVisitRegistration($attributes);
+        $this->mcu_visit_model  = parent::prepareStoreVisitRegistration($attributes);
 
-        $visit_registrations      = static::$mcu_visit_model->childs;
+        $visit_registrations      = $this->mcu_visit_model->childs;
         foreach ($visit_registrations as $visit_registration) {
             $visit_registration->is_mcu = true;
             $visit_registration->save();
         }
 
-        $this->__mcu_visit_registration = $mcu_visit_registration   = &static::$mcu_visit_model;
+        $this->__mcu_visit_registration = $mcu_visit_registration   = &$this->mcu_visit_model;
 
         $this->initPatientSummary($this->appVisitExaminationSchema()->prepareStoreVisitExamination([
             $mcu_visit_registration->getForeignKey() => $mcu_visit_registration->getKey()
