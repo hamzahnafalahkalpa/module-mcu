@@ -3,11 +3,11 @@
     "description": "module mcu",
     "type": "library",
     "require": {
-        "hanafalah/laravel-support": "dev-main as 1.0",
-        "hanafalah/module-patient": "dev-main as 1.0",
-        "hanafalah/module-transaction": "dev-main as 1.0",
-        "hanafalah/module-treatment": "dev-main as 1.0",
-        "hanafalah/module-service": "dev-main as 1.0"
+        "hanafalah/laravel-support": "dev-main",
+        "hanafalah/module-patient": "dev-main",
+        "hanafalah/module-transaction": "dev-main",
+        "hanafalah/module-treatment": "dev-main",
+        "hanafalah/module-service": "dev-main"
     },
     "autoload": {
         "psr-4": {
