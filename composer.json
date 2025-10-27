@@ -14,13 +14,6 @@
             "Hanafalah\\ModuleMcu\\": "src/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Hanafalah\\ModuleMcu\\ModuleMcuServiceProvider"
-            ]
-        }
-    },
     "authors": [
         {
             "name": "ibnu",
